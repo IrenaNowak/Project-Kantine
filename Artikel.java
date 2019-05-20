@@ -20,6 +20,8 @@ public class Artikel {
      */
     public Artikel() {
         System.out.println("Er zijn geen prijs en naam opgegeven voor het nieuwe Artikel");
+        this.naam = null;
+        this.prijs = null;
     }
 
     /**
