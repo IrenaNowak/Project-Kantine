@@ -18,9 +18,8 @@ public class Artikel {
      * Lege constructor waarin geen parameters zijn opgegeven
      */
     public Artikel() {
-        System.out.println("Er zijn geen prijs en naam opgegeven voor het nieuwe Artikel");
-        this.naam = "Empty";
-        this.prijs = 0;
+        this.naam = "EMPTY";
+        this.prijs = 0.00;
     }
 
     /**
