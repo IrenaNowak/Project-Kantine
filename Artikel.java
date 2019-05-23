@@ -60,4 +60,8 @@ public class Artikel {
         return prijs;
     }
 
+    public String toString() {
+        System.out.println(naam + " " + prijs);
+    }
+
 }

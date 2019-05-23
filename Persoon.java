@@ -28,11 +28,11 @@ public class Persoon {
     }
 
     public void setVoornaam(String nieuweVoornaam) {
-        this.voornaam = nieuweVoornaamoornaam;
+        this.voornaam = nieuweVoornaam;
     }
 
     public void setAchternaam(String nieuweAchternaam) {
-        this.achternaam = nieuweAchternaamchternaam;
+        this.achternaam = nieuweAchternaam;
     }
 
     public void setGeboortedatum(Date nieuweGeboortedatum) {
@@ -65,10 +65,15 @@ public class Persoon {
     }
 
     public String getGeslacht() {
-    if(this.geslacht != "Man" || "Vrouw") {
-        System.out.println("Onbekend")
-    } else {
-        return this.geslacht;
+        if (!this.geslacht.equals("Man") || !this.geslacht.equals("Vrouw")) {
+            System.out.println("Onbekend");
+        } else {
+            return this.geslacht;
+        }
+    }
+
+    public String toString() {
+        System.out.println(BSN + " " + voornaam + " " + achternaam + " " + geboortedatum + " " + geslacht);
     }
 
 }
