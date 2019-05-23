@@ -1,16 +1,15 @@
 public class Artikel {
 
-    /* Velden voor de naam als String en prijs als int */
     private String naam;
-    private int prijs;
+    private double prijs;
 
     /**
      * Constructor waarin de velden worden geinitaliseerd
      *
      * @param naam (String)
-     * @param prijs (int)
+     * @param prijs (double)
      */
-    public Artikel(String naam, int prijs) {
+    public Artikel(String naam, double prijs) {
         this.naam = naam;
         this.prijs = prijs;
     }
@@ -20,8 +19,8 @@ public class Artikel {
      */
     public Artikel() {
         System.out.println("Er zijn geen prijs en naam opgegeven voor het nieuwe Artikel");
-        this.naam = null;
-        this.prijs = null;
+        this.naam = "Empty";
+        this.prijs = 0;
     }
 
     /**
@@ -45,23 +44,26 @@ public class Artikel {
     /**
      * Methode om de nieuwe prijs op te geven van een Artikel
      *
-     * @param nieuwePrijs (int)
+     * @param nieuwePrijs (double)
      */
-    public void setPrijs(int nieuwePrijs) {
+    public void setPrijs(double nieuwePrijs) {
         this.prijs = nieuwePrijs;
     }
 
     /**
      * Methode die de huidige prijs retourneert
      *
-     * @return prijs als een int
+     * @return prijs als een double
      */
-    public int getPrijs() {
+    public double getPrijs() {
         return prijs;
     }
 
+    /**
+     * Methode om de velden terug te geven van deze klasse in een String
+     */
     public String toString() {
-        System.out.println(naam + " " + prijs);
+        System.out.println(this.naam + " " + this.prijs);
     }
 
 }

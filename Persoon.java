@@ -1,79 +1,149 @@
-import java.util.*;
+import java.util.Date;
 public class Persoon {
 
-    private int BSN; // Kan int?
+    private String BSN;
     private String voornaam;
     private String achternaam;
-    private Date geboortedatum; // Klopt dit?
+    private Date geboortedatum;
     private String geslacht;
 
-    public Persoon(int BSN, String voornaam, String achternaam, Date geboortedatum, String geslacht) {
+    /**
+     * Constructor voor het aanmaken van een nieuw Persoon
+     *
+     * @param BSN (String)
+     * @param voornaam (String)
+     * @param achternaam (String)
+     * @param geboortedatum (Date)
+     * @param geslacht (String)
+     */
+    public Persoon(String BSN, String voornaam, String achternaam, Date geboortedatum, String geslacht) {
         this.BSN = BSN;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
-        if(geslacht != "Man" || "Vrouw") {
+        this.geslacht = String.toLowerCase(geslacht);
+        if(geslacht != "man" || "vrouw") {
             System.err.println("Geen geldig geslacht opgegeven")
         } else {
             this.geslacht = geslacht;
         }
     }
 
+    /**
+     * Constructor voor het aanmaken van een nieuw Persoon zonder opgegeven gegevens
+     */
     public Persoon() {
-        this.geboortedatum = null;
-        this.geslacht = null;
+        this.bsn = "BSN onbekend";
+        this.voornaam = "Voornaam onbekend";
+        this.achternaam = "Achternaam onbekend"
+        this.geboortedatum = new Date(0, 0, 0);
+        this.geslacht = "Geslacht onbekend";
     }
-    public void setBSN(int nieuweBSN) {
+
+    /**
+     * Deze methode past het BSN aan van Persoon
+     *
+     * @param nieuweBSN (String)
+     */
+    public void setBSN(String nieuweBSN) {
         this.BSN = nieuweBSN;
     }
 
+    /**
+     * Deze methode past de voornaam aan van Persoon
+     *
+     * @param nieuweVoornaam (String)
+     */
     public void setVoornaam(String nieuweVoornaam) {
         this.voornaam = nieuweVoornaam;
     }
 
+    /**
+     * Deze methode past de achternaam aan van Persoon
+     *
+     * @param nieuweAchternaam (String)
+     */
     public void setAchternaam(String nieuweAchternaam) {
         this.achternaam = nieuweAchternaam;
     }
 
+    /**
+     * Deze methode past de geboortedatum aan van Persoon
+     *
+     * @param nieuweGeboortedatum (Date)
+     */
     public void setGeboortedatum(Date nieuweGeboortedatum) {
         this.geboortedatum = nieuweGeboortedatum;
     }
 
+    /**
+     * Deze methode past het geslacht aan van Persoon als "man" of "vrouw"
+     *
+     * @param nieuwGeslacht (String)
+     */
     public void setGeslacht(String nieuwGeslacht) {
-        this.geslacht = nieuwGeslacht;
+        nieuwGeslacht = String.toLowerCase(nieuwGeslacht);
+        if(!(nieuwGeslacht.equals("man")) || !(nieuwGeslacht.equals("vrouw"))) {
+            System.err.println("Geen geldig geslacht opgegeven")
+        } else {
+            this.geslacht = nieuwGeslacht;
+        }
     }
 
-    public int getBSN() {
+    /**
+     * Deze methode retourneert het BSN van Persoon
+     *
+     * @return BSN (String)
+     */
+    public String getBSN() {
         return this.BSN;
     }
 
+    /**
+     * Deze methode retourneert de voornaam van Persoon
+     *
+     * @return voornaam (String)
+     */
     public String getVoornaam() {
         return this.voornaam;
     }
 
+    /**
+     * Deze methode retourneert de achternaam van Persoon
+     *
+     * @return achternaam (String)
+     */
     public String getAchternaam() {
         return this.achternaam;
     }
 
     /**
-     * NOG NADER AAN TE PASSEN!!!!
-     * @return
+     * Deze methode retourneert de geboortedatum als een String via de methode Datum.getDatumAsString()
+     *
+     * @return geboortedatum (String)
      */
-    public Date getGeboortedatum() {
-        return this.geboortedatum;
-        return Datum.getDatumAsString();
+    public String getGeboortedatum() {
+        return geboortedatum.getDatumAsString();
     }
 
+    /**
+     * Deze methode retourneert het geslacht van Persoon
+     *
+     * @return geslacht (String)
+     */
     public String getGeslacht() {
-        if (!this.geslacht.equals("Man") || !this.geslacht.equals("Vrouw")) {
+        if (!(this.geslacht.equals("man")) || !(this.geslacht.equals("vrouw"))) {
             System.out.println("Onbekend");
         } else {
             return this.geslacht;
         }
     }
 
+    /**
+     * Deze methode geeft alle opgegeven velden terug als een string
+     */
     public String toString() {
-        System.out.println(BSN + " " + voornaam + " " + achternaam + " " + geboortedatum + " " + geslacht);
+        System.out.println(this.BSN + " " + this.voornaam + " " + this.achternaam + " " + this.geboortedatum.getDatumAsString() + " " + this.geslacht);
     }
 
 }

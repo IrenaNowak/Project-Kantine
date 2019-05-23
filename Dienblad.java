@@ -4,16 +4,22 @@ import java.util.Stack;
 
 public class Dienblad {
     private ArrayList<Artikel> artikelen;
+    private Persoon persoon;
 
     /**
-     * Constructor
+     * Constructor voor het aanmaken van een nieuw dienblad
      */
     public Dienblad() {
-        // method body omitted
+        this.artikelen = new ArrayList<>();
     }
 
-    public Dienblad(Persoon klant) {
-        // method body omitted
+    /**
+     * Constructor om een Dienblad aan een Persoon toe te kennen
+     *
+     * @param persoon (Persoon)
+     */
+    public Dienblad(Persoon persoon) {
+        this.persoon = persoon;
     }
 
     /**
@@ -35,13 +41,35 @@ public class Dienblad {
     }
 
     /**
-     * Methode om de totaalprijs van de artikelen
-     * op dienblad uit te rekenen
+     * Methode om de totaalprijs van de artikelen op Dienblad uit te rekenen
      *
-     * @return De totaalprijs
+     * @return De totaalprijs (double)
      */
     public double getTotaalPrijs() {
-        // method body omitted
+        double totaalPrijs = 0;
+        for(int i = 0; i <= getAantalArtikelen(); i++) {
+            totaalPrijs += artikelen.get(i).getPrijs();
+        }
+        return totaalPrijs;
     }
+
+    /**
+     * Retourneert de gegevens van de Persoon
+     *
+     * @return persoon (Persoon)
+     */
+    public Persoon getPersoon() {
+        return this.persoon;
+    }
+
+    /**
+     * Methode om de Persoon aan te passen
+     *
+     * @param persoon (Persoon)
+     */
+    public void setPersoon(Persoon persoon) {
+        this.persoon = persoon;
+    }
+
 }
 
