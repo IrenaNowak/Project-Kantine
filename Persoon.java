@@ -23,7 +23,6 @@ public class Persoon {
         this.geboortedatum = null;
         this.geslacht = null;
     }
-
     public void setBSN(int nieuweBSN) {
         this.BSN = nieuweBSN;
     }
@@ -62,6 +61,7 @@ public class Persoon {
      */
     public Date getGeboortedatum() {
         return this.geboortedatum;
+        return Datum.getDatumAsString();
     }
 
     public String getGeslacht() {
@@ -72,6 +72,3 @@ public class Persoon {
     }
 
 }
-
-
-

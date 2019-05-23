@@ -12,22 +12,26 @@ public class Dienblad {
         // method body omitted
     }
 
+    public Dienblad(Persoon klant) {
+        // method body omitted
+    }
+
     /**
      * Methode om artikel aan dienblad toe te voegen
      *
-     * @param artikel
+     * @param artikel (Artikel)
      */
     public void voegToe(Artikel artikel) {
-        // method body omitted
+        artikelen.add(artikel);
     }
 
     /**
      * Methode om aantal artikelen op dienblad te tellen
      *
-     * @return Het aantal artikelen
+     * @return Het aantal artikelen (int)
      */
     public int getAantalArtikelen() {
-        // method body omitted
+        return artikelen.size();
     }
 
     /**
