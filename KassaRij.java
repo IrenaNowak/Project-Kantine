@@ -14,7 +14,8 @@ public class KassaRij {
 
     /**
      * Persoon sluit achter in de rij aan
-     * @param klant
+     *
+     * @param klant die achteraan sluit
      */
     public void sluitAchteraan(Dienblad klant) {
         rij.add(klant);
@@ -29,8 +30,8 @@ public class KassaRij {
      *          verwijdering eerste van de rij als er wel klanten zijn
      */
     public Dienblad eerstePersoonInRij() {
-        if(erIsEenRij() == true) {
-            rij.remove(0);
+        if(erIsEenRij()) {
+            return rij.remove(0);
         }
         return null;
     }
@@ -42,9 +43,6 @@ public class KassaRij {
      *          true als er wel een rij is
      */
     public boolean erIsEenRij() {
-        if(rij.size() == 0) {
-            return false;
-        }
-        else return true;
+        return rij.size() != 0;
     }
 }

@@ -15,7 +15,7 @@ public class KantineSimulatie {
      * Deze methode simuleert een aantal dagen in het
      * verloop van de kantine
      *
-     * @param dagen
+     * @param dagen wat je simuleert
      */
     public void simuleer(int dagen) {
 
@@ -50,6 +50,6 @@ public class KantineSimulatie {
             dagen = Integer.parseInt(args[0]);
         }
 
-        simulate(dagen);
+        simuleer(dagen);
     }
 }

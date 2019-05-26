@@ -16,7 +16,7 @@ public class Dienblad {
     /**
      * Constructor om een Dienblad aan een Persoon toe te kennen
      *
-     * @param persoon (Persoon)
+     * @param persoon die Dienblad heeft
      */
     public Dienblad(Persoon persoon) {
         this.persoon = persoon;
@@ -25,7 +25,7 @@ public class Dienblad {
     /**
      * Methode om artikel aan dienblad toe te voegen
      *
-     * @param artikel (Artikel)
+     * @param artikel toegevoegd aan Dienblad
      */
     public void voegToe(Artikel artikel) {
         artikelen.add(artikel);
@@ -34,7 +34,7 @@ public class Dienblad {
     /**
      * Methode om aantal artikelen op dienblad te tellen
      *
-     * @return Het aantal artikelen (int)
+     * @return Het aantal artikelen op het Dienblad
      */
     public int getAantalArtikelen() {
         return artikelen.size();
@@ -43,11 +43,11 @@ public class Dienblad {
     /**
      * Methode om de totaalprijs van de artikelen op Dienblad uit te rekenen
      *
-     * @return De totaalprijs (double)
+     * @return De totaalprijs van de artikelen op Dienblad
      */
     public double getTotaalPrijs() {
         double totaalPrijs = 0;
-        for(int i = 0; i <= getAantalArtikelen(); i++) {
+        for(int i = 0; i < getAantalArtikelen(); i++) {
             totaalPrijs += artikelen.get(i).getPrijs();
         }
         return totaalPrijs;
@@ -56,7 +56,7 @@ public class Dienblad {
     /**
      * Retourneert de gegevens van de Persoon
      *
-     * @return persoon (Persoon)
+     * @return Persoon persoonsgegevens
      */
     public Persoon getPersoon() {
         return this.persoon;
@@ -65,7 +65,7 @@ public class Dienblad {
     /**
      * Methode om de Persoon aan te passen
      *
-     * @param persoon (Persoon)
+     * @param persoon welk Persoon
      */
     public void setPersoon(Persoon persoon) {
         this.persoon = persoon;

@@ -27,65 +27,73 @@ public class Datum {
 	}
 
 	/**
-	 * Getter voor Sting weergave van datum
-	 * @return Geboortedatum
+	 * Getter voor String weergave van datum
+	 *
+	 * @return String van de datum
 	 */
 	public String getDatumAsString() {
 		// TODO
-		return "";
+		return String.format("{0:D2}-{1:D2}-{2}", dag, maand, jaar);
 	}
 
 	/**
-	 * getter voor de int dag
-	 * @return Dag als int
+	 * Getter voor de int dag
+	 *
+	 * @return dag van de datum
 	 */
 	public int getDag() {
 		return dag;
 	}
 
 	/**
-	 * getter voor de int maand
-	 * @return Maand als int
+	 * Getter voor de int maand
+	 *
+	 * @return maand van de datum
 	 */
 	public int getMaand() {
 		return maand;
 	}
 
 	/**
-	 * getter voor de int jaar
-	 * @return Jaar als int
+	 * Getter voor de int jaar
+	 *
+	 * @return jaar van de datum
 	 */
 	public int getJaar() {
 		return jaar;
 	}
 
 	/**
-	 * setter voor de dag int
-	 * @param int dag voor de dag
+	 * Setter voor de dag int
+	 *
+	 * @param dag voor de dag
 	 */
 	public void setDag(int dag) {
 		this.dag = dag;
 	}
 
 	/**
-	 * setter voor de maand int
-	 * @param int maand voor de maand
+	 * Setter voor de maand int
+	 *
+	 * @param maand voor de maand
 	 */
 	public void setMaand(int maand) {
 		this.maand = maand;
 	}
 
 	/**
-	 * setter voor de jaar int
-	 * @param int jaar voor het jaar
+	 * Setter voor de jaar int
+	 *
+	 * @param jaar voor het jaar
 	 */
 	public void setJaar(int jaar) {
 		this.jaar = jaar;
 	}
 
 	/**
-	 * checkt of de datum wel geldig is
-	 * @return
+	 * Checkt of de datum wel geldig is
+	 *
+	 * @return true or false wanneer de datum wel of niet bestaat
 	 */
 	public boolean bestaatDatum(int dag, int maand, int jaar) {
 		int[] maanden31D = {1, 3, 5, 7, 8, 10, 12};

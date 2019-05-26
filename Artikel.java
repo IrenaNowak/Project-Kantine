@@ -6,8 +6,8 @@ public class Artikel {
     /**
      * Constructor waarin de velden worden geinitaliseerd
      *
-     * @param naam (String)
-     * @param prijs (double)
+     * @param naam Voor nieuw Artikel
+     * @param prijs Voor nieuw Artikel
      */
     public Artikel(String naam, double prijs) {
         this.naam = naam;
@@ -25,7 +25,7 @@ public class Artikel {
     /**
      * Methode om een nieuwe naam op te geven van een Artikel
      *
-     * @param nieuweNaam (String)
+     * @param nieuweNaam nieuwe naam voor het Artikel
      */
     public void setNaam(String nieuweNaam) {
         this.naam = nieuweNaam;
@@ -34,7 +34,7 @@ public class Artikel {
     /**
      * Methode die de huidige naam van het Artikel retourneert
      *
-     * @return naam als een String
+     * @return naam van het Artikel
      */
     public String getNaam() {
         return naam;
@@ -43,7 +43,7 @@ public class Artikel {
     /**
      * Methode om de nieuwe prijs op te geven van een Artikel
      *
-     * @param nieuwePrijs (double)
+     * @param nieuwePrijs nieuwe prijs voor het Artikel
      */
     public void setPrijs(double nieuwePrijs) {
         this.prijs = nieuwePrijs;
@@ -52,7 +52,7 @@ public class Artikel {
     /**
      * Methode die de huidige prijs retourneert
      *
-     * @return prijs als een double
+     * @return prijs van het Artikel
      */
     public double getPrijs() {
         return prijs;
@@ -60,9 +60,11 @@ public class Artikel {
 
     /**
      * Methode om de velden terug te geven van deze klasse in een String
+     *
+     * @return String van naam en prijs
      */
     public String toString() {
-        System.out.println(this.naam + " " + this.prijs);
+        return this.naam + " " + this.prijs;
     }
 
 }
