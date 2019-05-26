@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class KassaRij {
 
@@ -27,10 +26,10 @@ public class KassaRij {
      * Als er niemand in de rij staat geeft deze null terug.
      *
      * @return null als er geen klanten zijn
-     *          verwijdering eerste van de rij als er wel klanten zijn
+     * verwijdering eerste van de rij als er wel klanten zijn
      */
     public Dienblad eerstePersoonInRij() {
-        if(erIsEenRij()) {
+        if (erIsEenRij()) {
             return rij.remove(0);
         }
         return null;
@@ -40,7 +39,7 @@ public class KassaRij {
      * Methode kijkt of er personen in de rij staan.
      *
      * @return false als er geen rij is
-     *          true als er wel een rij is
+     * true als er wel een rij is
      */
     public boolean erIsEenRij() {
         return rij.size() != 0;

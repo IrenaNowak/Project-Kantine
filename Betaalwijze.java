@@ -4,6 +4,7 @@ public abstract class Betaalwijze {
 
     /**
      * Methode om krediet te initialiseren
+     *
      * @param saldo
      */
     public void setSaldo(double saldo) {

@@ -6,7 +6,7 @@ public class Artikel {
     /**
      * Constructor waarin de velden worden geinitaliseerd
      *
-     * @param naam Voor nieuw Artikel
+     * @param naam  Voor nieuw Artikel
      * @param prijs Voor nieuw Artikel
      */
     public Artikel(String naam, double prijs) {

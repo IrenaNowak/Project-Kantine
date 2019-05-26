@@ -25,7 +25,7 @@ public class Kantine {
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-        while() {
+        while () {
             // omitted
         }
     }
@@ -36,7 +36,7 @@ public class Kantine {
      * @return hoeveelheid geld in kassa
      */
     public double hoeveelheidGeldInKassa() {
-       // method body omitted
+        // method body omitted
     }
 
     /**

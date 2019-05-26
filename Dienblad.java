@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Stack;
 
 public class Dienblad {
     private ArrayList<Artikel> artikelen;
@@ -47,7 +45,7 @@ public class Dienblad {
      */
     public double getTotaalPrijs() {
         double totaalPrijs = 0;
-        for(int i = 0; i < getAantalArtikelen(); i++) {
+        for (int i = 0; i < getAantalArtikelen(); i++) {
             totaalPrijs += artikelen.get(i).getPrijs();
         }
         return totaalPrijs;

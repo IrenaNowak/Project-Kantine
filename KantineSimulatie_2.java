@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Random;
 
 public class KantineSimulatie {
 
@@ -16,7 +16,7 @@ public class KantineSimulatie {
 
     // artikelen
     private static final String[] artikelnamen = new String[]
-        {"Koffie", "Broodje pindakaas", "Broodje kaas", "Appelsap"};
+            {"Koffie", "Broodje pindakaas", "Broodje kaas", "Appelsap"};
 
     // prijzen
     private static double[] artikelprijzen = new double[]{1.50, 2.10, 1.65, 1.65};
@@ -35,17 +35,16 @@ public class KantineSimulatie {
 
     /**
      * Constructor
-     *
      */
     public KantineSimulatie() {
         kantine = new Kantine();
         random = new Random();
         int[] hoeveelheden = getRandomArray(
-            AANTAL_ARTIKELEN,
-            MIN_ARTIKELEN_PER_SOORT,
-            MAX_ARTIKELEN_PER_SOORT);
+                AANTAL_ARTIKELEN,
+                MIN_ARTIKELEN_PER_SOORT,
+                MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod = new KantineAanbod(
-            artikelnamen, artikelprijzen, hoeveelheden);
+                artikelnamen, artikelprijzen, hoeveelheden);
 
         kantine.setKantineAanbod(kantineaanbod);
     }
@@ -61,7 +60,7 @@ public class KantineSimulatie {
      */
     private int[] getRandomArray(int lengte, int min, int max) {
         int[] temp = new int[lengte];
-        for(int i = 0; i < lengte ;i++) {
+        for (int i = 0; i < lengte; i++) {
             temp[i] = getRandomValue(min, max);
         }
 
@@ -90,7 +89,7 @@ public class KantineSimulatie {
     private String[] geefArtikelNamen(int[] indexen) {
         String[] artikelen = new String[indexen.length];
 
-        for(int i = 0; i < indexen.length; i++) {
+        for (int i = 0; i < indexen.length; i++) {
             artikelen[i] = artikelnamen[indexen[i]];
 
         }
@@ -106,22 +105,22 @@ public class KantineSimulatie {
      */
     public void simuleer(int dagen) {
         // for lus voor dagen
-        for(int i = 0; i < dagen; i++) {
+        for (int i = 0; i < dagen; i++) {
 
             // bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen = ... ;
+            int aantalpersonen = ...;
 
             // laat de personen maar komen...
-            for(int j = 0; j < aantalpersonen; j++) {
+            for (int j = 0; j < aantalpersonen; j++) {
 
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen = ... ;
+                int aantalartikelen = ...;
 
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen
                 array int[] tepakken = getRandomArray(
-                    aantalartikelen, 0, AANTAL_ARTIKELEN-1);
+                        aantalartikelen, 0, AANTAL_ARTIKELEN - 1);
 
                 // vind de artikelnamen op basis van
                 // de indexen hierboven

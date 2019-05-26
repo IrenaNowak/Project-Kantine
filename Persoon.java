@@ -9,18 +9,18 @@ public class Persoon {
     /**
      * Constructor voor het aanmaken van een nieuw Persoon
      *
-     * @param BSN van Persoon
-     * @param voornaam van Persoon
-     * @param achternaam van Persoon
+     * @param BSN           van Persoon
+     * @param voornaam      van Persoon
+     * @param achternaam    van Persoon
      * @param geboortedatum van Persoon
-     * @param geslacht van Persoon
+     * @param geslacht      van Persoon
      */
     public Persoon(String BSN, String voornaam, String achternaam, Datum geboortedatum, char geslacht) {
         this.BSN = BSN;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
-        if(geslacht != 'm' && geslacht != 'v') {
+        if (geslacht != 'm' && geslacht != 'v') {
             System.err.println("Geen geldig geslacht opgegeven");
         } else {
             this.geslacht = geslacht;
@@ -80,7 +80,7 @@ public class Persoon {
      * @param nieuwGeslacht (String)
      */
     public void setGeslacht(char nieuwGeslacht) {
-        if(nieuwGeslacht != 'm' && nieuwGeslacht != 'v') {
+        if (nieuwGeslacht != 'm' && nieuwGeslacht != 'v') {
             System.err.println("Geen geldig geslacht opgegeven");
         } else {
             this.geslacht = nieuwGeslacht;
@@ -129,9 +129,9 @@ public class Persoon {
      * @return String van geslacht (Man, Vrouw of Onbekend)
      */
     public String getGeslachtAsString() {
-        if(geslacht == 'v') {
+        if (geslacht == 'v') {
             return "Vrouw";
-        } else if(geslacht == 'm') {
+        } else if (geslacht == 'm') {
             return "Man";
         } else {
             return "Onbekend";
