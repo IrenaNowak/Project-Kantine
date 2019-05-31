@@ -1,14 +1,14 @@
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class Dienblad {
-    private ArrayList<Artikel> artikelen;
+    private Stack<Artikel> artikelen;
     private Persoon persoon;
 
     /**
      * Constructor voor het aanmaken van een nieuw dienblad
      */
     public Dienblad() {
-        this.artikelen = new ArrayList<>();
+        this.artikelen = new Stack<>();
     }
 
     /**

@@ -1,14 +1,14 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class KassaRij {
 
-    private ArrayList<Dienblad> rij;
+    private LinkedList<Persoon> rij;
 
     /**
      * Constructor
      */
     public KassaRij() {
-        rij = new ArrayList<>();
+        rij = new LinkedList<>();
     }
 
     /**
@@ -16,7 +16,7 @@ public class KassaRij {
      *
      * @param klant die achteraan sluit
      */
-    public void sluitAchteraan(Dienblad klant) {
+    public void sluitAchteraan(Persoon klant) {
         rij.add(klant);
     }
 
@@ -28,7 +28,7 @@ public class KassaRij {
      * @return null als er geen klanten zijn
      * verwijdering eerste van de rij als er wel klanten zijn
      */
-    public Dienblad eerstePersoonInRij() {
+    public Persoon eerstePersoonInRij() {
         if (erIsEenRij()) {
             return rij.remove(0);
         }
