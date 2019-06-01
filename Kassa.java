@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Kassa {
 
     private Artikel artikel;
@@ -21,9 +23,9 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        System.out.println("Het aantal artikelen: " + klant.getAantalArtikelen() + "\n" + "De totaalprijs: €" + klant.getTotaalPrijs());
-        afgerekendArtikel += klant.getAantalArtikelen();
-        totaalPrijs += klant.getTotaalPrijs();
+        System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + getTotaalPrijs(klant));
+        afgerekendArtikel += getAantalArtikelen(klant);
+        totaalPrijs += getTotaalPrijs(klant);
     }
 
     /**
@@ -54,5 +56,36 @@ public class Kassa {
     public void resetKassa() {
         totaalPrijs = 0;
         afgerekendArtikel = 0;
+    }
+
+    /**
+     * Methode om de totaalprijs op te halen die bij een Dienblad hoort
+     *
+     * @param klant Dienblad van klant
+     * @return double met de totaalprijs van Dienblad
+     */
+    public double getTotaalPrijs(Dienblad klant) {
+        Iterator<Artikel> prijsIterator = klant.getArtikelIterator();
+        double totaalPrijs = 0;
+        while(prijsIterator.hasNext()) {
+            totaalPrijs += prijsIterator.next().getPrijs();
+        }
+        return totaalPrijs;
+    }
+
+    /**
+     * Methode om het aantal artiekeln op te halen die bij een Dienblad hoort
+     *
+     * @param klant Dienblad van klant
+     * @return int met het aantal artikelen op Dienblad
+     */
+    public int getAantalArtikelen(Dienblad klant) {
+        Iterator<Artikel> artikelIterator = klant.getArtikelIterator();
+        int aantalArtikelen = 0;
+        while(artikelIterator.hasNext()) {
+            aantalArtikelen++;
+            artikelIterator.next();
+        }
+        return aantalArtikelen;
     }
 }

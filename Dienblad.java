@@ -1,4 +1,4 @@
-import java.util.Stack;
+import java.util.*;
 
 public class Dienblad {
     private Stack<Artikel> artikelen;
@@ -30,28 +30,6 @@ public class Dienblad {
     }
 
     /**
-     * Methode om aantal artikelen op dienblad te tellen
-     *
-     * @return Het aantal artikelen op het Dienblad
-     */
-    public int getAantalArtikelen() {
-        return artikelen.size();
-    }
-
-    /**
-     * Methode om de totaalprijs van de artikelen op Dienblad uit te rekenen
-     *
-     * @return De totaalprijs van de artikelen op Dienblad
-     */
-    //public double getTotaalPrijs() {
-    //    double totaalPrijs = 0;
-    //    for (int i = 0; i < getAantalArtikelen(); i++) {
-    //        totaalPrijs += artikelen.get(i).getPrijs();
-   //     }
-    //    return totaalPrijs;
-    //}
-
-    /**
      * Retourneert de gegevens van de Persoon
      *
      * @return Persoon persoonsgegevens
@@ -67,6 +45,15 @@ public class Dienblad {
      */
     public void setPersoon(Persoon persoon) {
         this.persoon = persoon;
+    }
+
+    /**
+     * Iterator over de Stack artikelen met type Artikel
+     *
+     * @return Iterator<Artikel> artikelen
+     */
+    public Iterator<Artikel> getArtikelIterator() {
+        return artikelen.iterator();
     }
 
 }
