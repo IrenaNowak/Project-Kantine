@@ -43,13 +43,13 @@ public class Dienblad {
      *
      * @return De totaalprijs van de artikelen op Dienblad
      */
-    public double getTotaalPrijs() {
-        double totaalPrijs = 0;
-        for (int i = 0; i < getAantalArtikelen(); i++) {
-            totaalPrijs += artikelen.get(i).getPrijs();
-        }
-        return totaalPrijs;
-    }
+    //public double getTotaalPrijs() {
+    //    double totaalPrijs = 0;
+    //    for (int i = 0; i < getAantalArtikelen(); i++) {
+    //        totaalPrijs += artikelen.get(i).getPrijs();
+   //     }
+    //    return totaalPrijs;
+    //}
 
     /**
      * Retourneert de gegevens van de Persoon

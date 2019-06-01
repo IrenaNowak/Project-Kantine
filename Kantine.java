@@ -18,34 +18,34 @@ public class Kantine {
      * Persoon zich aan bij de rij voor de kassa.
      */
     public void loopPakSluitAan() {
-        // method body omitted
+        // TODO
     }
 
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-        while () {
-            // omitted
+        while (kassarij.erIsEenRij()) {
+            kassa.rekenAf(kassarij.eerstePersoonInRij());
         }
     }
 
     /**
-     * Deze methode telt het geld uit de kassa
+     * Retourneert de Kassa
      *
-     * @return hoeveelheid geld in kassa
+     * @return Kassa van Kantine
      */
-    public double hoeveelheidGeldInKassa() {
-        // method body omitted
+    public Kassa getKassa() {
+        return this.kassa;
     }
 
     /**
-     * Deze methode geeft het aantal gepasseerde artikelen.
+     * Retourneert de KassaRij
      *
-     * @return het aantal gepasseerde artikelen
+     * @return KassaRij van Kantine
      */
-    public int aantalArtikelen() {
-        // method body omitted
+    public KassaRij getKassarij() {
+        return this.kassarij;
     }
 
     /**

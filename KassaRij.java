@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 public class KassaRij {
 
-    private LinkedList<Persoon> rij;
+    private LinkedList<Dienblad> rij;
 
     /**
      * Constructor
@@ -16,7 +16,7 @@ public class KassaRij {
      *
      * @param klant die achteraan sluit
      */
-    public void sluitAchteraan(Persoon klant) {
+    public void sluitAchteraan(Dienblad klant) {
         rij.add(klant);
     }
 
@@ -28,7 +28,7 @@ public class KassaRij {
      * @return null als er geen klanten zijn
      * verwijdering eerste van de rij als er wel klanten zijn
      */
-    public Persoon eerstePersoonInRij() {
+    public Dienblad eerstePersoonInRij() {
         if (erIsEenRij()) {
             return rij.remove(0);
         }
