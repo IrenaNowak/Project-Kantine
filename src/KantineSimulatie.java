@@ -22,21 +22,27 @@ public class KantineSimulatie {
     public void simuleer(int dagen) {
 
         // herhaal voor elke dag
-        for (int i = 0; i < dagen; i++){
+        for (int i = 0; i < dagen; i++) {
 
             // per dag nu even vast 10 + i personen naar binnen
             // laten gaan, wordt volgende week veranderd...
+            //aantal personen per dag
+            int aantalPersonen= 10 + i;
 
             // for lus voor personen
-            for (int j = 0; j < 10 + i; j++) {
-                //kantine.(...);
+            for (int j = 0; j < aantalPersonen; j++) {
+                kantine.loopPakSluitAan();
             }
 
             // verwerk rij voor de kassa
+            kantine.verwerkRijVoorKassa();
 
             // toon dagtotalen (artikelen en geld in kassa)
+            System.out.println("Het aantal verkochten artikelen is: " + kantine.aantalArtikelen());
+            System.out.println("De opbrengst is: " + kantine.hoeveelheidGeldInKassa() + "euro");
 
             // reset de kassa voor de volgende dag
+            kantine.resetKassa();
         }
     }
 
