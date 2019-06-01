@@ -1,3 +1,5 @@
+package src;
+
 public class KantineSimulatie {
 
     private Kantine kantine;

@@ -1,3 +1,5 @@
+package src;
+
 public abstract class Betaalwijze {
 
     protected double saldo;
