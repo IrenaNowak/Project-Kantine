@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Kantine {
 
@@ -30,6 +31,18 @@ public class Kantine {
 
         kassarij.sluitAchteraan(dienblad);
 
+    }
+
+    /**
+     * In deze methode kiest een Persoon met een Dienblad dee artikelen in artikelnamen
+     *
+     * @param persoon de Persoon
+     * @param artikelnamen Array met artikelen
+     */
+    public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
+        Dienblad dienblad = new Dienblad(persoon);
+        // ...
+        kassarij.sluitAchteraan(dienblad);
     }
 
     /**
