@@ -1,3 +1,5 @@
+package Project-Kantine;
+
 public class Kantine {
 
     private Kassa kassa;
@@ -18,7 +20,17 @@ public class Kantine {
      * Persoon zich aan bij de rij voor de kassa.
      */
     public void loopPakSluitAan() {
-        // TODO
+        Persoon persoon = new Persoon(012345678, "Jan", "Jansen", 20, 8, 2001, "m");
+        Dienblad dienblad = new Dienblad(persoon);
+
+        Artikel colaLight = new Artikel("Cola Light", 1.3);
+        Artikel kippensoep = new Artikel("Kippensoep", 0.5);
+
+        dienblad.voegToe(colaLight);
+        dienblad.voegToe(kippensoep);
+
+        sluitAchteraan(persoon);
+
     }
 
     /**
@@ -26,8 +38,18 @@ public class Kantine {
      */
     public void verwerkRijVoorKassa() {
         while (kassarij.erIsEenRij()) {
-            kassa.rekenAf(kassarij.eerstePersoonInRij());
+            kassa.rekenAf(dienblad);
+            //kassa.rekenAf(kassarij.eerstePersoonInRij());
         }
+    }
+
+    /**
+     * Deze methode telt het geld uit de kassa
+     *
+     * @return hoeveelheid geld in kassa
+     */
+    public double hoeveelheidGeldInKassa() {
+        return kassa.hoeveelheidGeldInKassa();
     }
 
     /**
@@ -37,6 +59,15 @@ public class Kantine {
      */
     public Kassa getKassa() {
         return this.kassa;
+    }
+
+    /**
+     * Deze methode geeft het aantal gepasseerde artikelen.
+     *
+     * @return het aantal gepasseerde artikelen
+     */
+    public int aantalArtikelen() {
+        return kassa.aantalArtikelen();
     }
 
     /**
@@ -53,6 +84,6 @@ public class Kantine {
      * het aantal artikelen en "leegt" de inhoud van de kassa.
      */
     public void resetKassa() {
-        // method body omitted
+        kassa.resetKassa();
     }
 }
