@@ -1,4 +1,3 @@
-package Project-Kantine;
 
 public class Kantine {
 
@@ -20,7 +19,7 @@ public class Kantine {
      * Persoon zich aan bij de rij voor de kassa.
      */
     public void loopPakSluitAan() {
-        Persoon persoon = new Persoon(012345678, "Jan", "Jansen", 20, 8, 2001, "m");
+        Persoon persoon = new Persoon("012345678", "Jan", "Jansen", new Datum(20, 8, 2001), 'm');
         Dienblad dienblad = new Dienblad(persoon);
 
         Artikel colaLight = new Artikel("Cola Light", 1.3);
@@ -29,7 +28,7 @@ public class Kantine {
         dienblad.voegToe(colaLight);
         dienblad.voegToe(kippensoep);
 
-        sluitAchteraan(persoon);
+        kassarij.sluitAchteraan(dienblad);
 
     }
 
@@ -38,8 +37,7 @@ public class Kantine {
      */
     public void verwerkRijVoorKassa() {
         while (kassarij.erIsEenRij()) {
-            kassa.rekenAf(dienblad);
-            //kassa.rekenAf(kassarij.eerstePersoonInRij());
+            kassa.rekenAf(kassarij.eerstePersoonInRij());
         }
     }
 
