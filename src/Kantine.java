@@ -39,6 +39,7 @@ public class Kantine {
         while (kassarij.erIsEenRij()) {
             kassa.rekenAf(kassarij.eerstePersoonInRij());
         }
+        //test
     }
 
     /**
