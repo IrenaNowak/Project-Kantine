@@ -23,4 +23,13 @@ aantalArtikelen() en hoeveelheidGeldInKassa()
   
 **Opgave 5b.** Je gebruikt een HashMap wanneer gedupliceerde waardes zijn toegestaan, maar gedupliceerde keys niet. Een HashSet gebruik je wanneer je niets gedupliceerd wilt hebben.
 
-**Opgave 6.a**
+**Opgave 6.a** Er wordt een nieuwe kantine en random nummer generator aangemaakt.
+Daarnaast wordt er een array gemaakt(hoeveelheden) van een paar waarden die random worden gekozen door de methode getRandomArray.
+Deze geeft een rijtje getallen terug. Hoeveel getallen dit zijn hangt af van hoeveel artikelen er worden verkocht in de kantine.
+Er wordt vervolgens een nieuwe kantineaanbod gemaakt en gevuld met de artikelnamen en artikelprijzen. Dan wordt de array hoeveelheden ook nog toegevoegd, zodat alle artikelen ook een hoeveelheid hebben.
+Het kantineaanbod wordt tenslotte ingevuld in de kantine. 
+
+**Opgave 6.b** getRandomValue heeft als parameters een minimaal getal en een maximaal getal. De random value moet dus tussen die twee getallen zitten.
+de random.nextInt roept een random getal op tussen 0 en het ingevoerde getal. In dit geval is dat dus het max-min +1. 
+Er wordt +1 bij de parameter gedaan want bij nextIn(int) telt hij de 0 mee(inclusief) maar het ingevoerde getal niet (exclusief). Om dit getal toch mee te laten doen, wordt er +1 bij opgedaan zodat de grenzen 0 en ingevoerd getal zijn. 
+Dit geeft dan een random getal terug. Bij dit random getal wordt vervolgens het min getal opgeteld, in het geval het random getal 0 gaf en anders krijg je lager dan het minimum, en dat is uiteindelijk de randomValue.
