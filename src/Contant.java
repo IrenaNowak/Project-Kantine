@@ -6,6 +6,6 @@ public class Contant extends Betaalwijze {
      */
     public boolean betaal(double tebetalen) {
         return false;
-        // todo
+        // TODO
     }
 }

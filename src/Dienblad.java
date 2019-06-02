@@ -19,6 +19,7 @@ public class Dienblad {
      * @param persoon die Dienblad heeft
      */
     public Dienblad(Persoon persoon) {
+        this();
         this.persoon = persoon;
     }
 

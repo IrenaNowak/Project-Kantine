@@ -25,7 +25,7 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + getTotaalPrijs(klant));
+        System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + String.format("%.2f", getTotaalPrijs(klant)) + "\n");
         afgerekendArtikel += getAantalArtikelen(klant);
         totaalPrijs += getTotaalPrijs(klant);
     }
