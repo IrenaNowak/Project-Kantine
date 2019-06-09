@@ -33,3 +33,31 @@ Het kantineaanbod wordt tenslotte ingevuld in de kantine.
 de random.nextInt roept een random getal op tussen 0 en het ingevoerde getal. In dit geval is dat dus het max-min +1. 
 Er wordt +1 bij de parameter gedaan want bij nextIn(int) telt hij de 0 mee(inclusief) maar het ingevoerde getal niet (exclusief). Om dit getal toch mee te laten doen, wordt er +1 bij opgedaan zodat de grenzen 0 en ingevoerd getal zijn. 
 Dit geeft dan een random getal terug. Bij dit random getal wordt vervolgens het min getal opgeteld, in het geval het random getal 0 gaf en anders krijg je lager dan het minimum, en dat is uiteindelijk de randomValue.
+
+###week 3
+**Opgave 2.c** Het is niet vereist om specifiek een contructor te definiëren.
+Als er geen constructor wordt gedefinieerd dan wordt er automatisch een 
+standaard lege constructor gegenereerd, dit heet een default constructor.
+
+**Opgave 2.d** Er zijn verschillende redenen waarom deze methoden static kunnen zijn. 
+Deze twee methodes zouden nooit hoeven te veranderen; De methodes gebruiken
+geen instantie variabelen; De methodes zijn niet afhankelijk van instantie creatie. 
+De methode kan dus nog prima werken ook al zou er geen instantie van administratie gecreeërd zijn.
+
+**Opgave 2.e** Wanneer een klasse een private constructor heeft en geen public constructors, 
+dan kunnen er geen instanties van de klasse worden gemaakt. De declaratie van de
+private constructor zorgt dater geen default constructor wordt gemaakt. 
+Dit kan prima in administratie want er zijn geen instantievariabelen en 
+er zijn alleen maar static methoden. 
+
+**Opgave 2.g** De final zorgt ervoor dat de variabele maar één keer kan worden geïnitialiseerd 
+en daarna niet meer kan worden veranderd. 
+
+**Opgave 2.h** Wat er gebeurt is dat een variabele(int) wordt opgeroep die niet bestaat.
+Er is immers geen instantie van de klasse aangemaakt met die variabele. 
+De niet static variabele bestaat dus niet en is onmogelijk om aan te roepen. 
+Dit kan worden opgelost door het sleutelwoord static te gebruiken.
+Static methoden bestaan namelijk altijd.
+
+**Opgave 2.i** Nu kan de variabele weer worden veranderd na de initialisatie. Dit mag niet voor
+de dagen van de week want die zullen nooit veranderen.  
