@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,9 +31,11 @@ public class KantineAanbod {
 
     private void vulVoorraadAan(String productnaam) {
         ArrayList<Artikel> huidigeVoorraad = aanbod.get(productnaam);
+
         int startHoeveelheid = startVoorraad.get(productnaam);
         int huidigeHoeveelheid = huidigeVoorraad.size();
         double prijs = prijzen.get(productnaam);
+
         for (int j = huidigeHoeveelheid; j < startHoeveelheid; j++) {
             huidigeVoorraad.add(new Artikel(productnaam, prijs));
         }
@@ -63,7 +63,10 @@ public class KantineAanbod {
         } else {
             Artikel a = stapel.get(0);
             stapel.remove(0);
-            if (stapel.size() <= 10) vulVoorraadAan(a.getNaam());
+
+            if (stapel.size() <= KantineSimulatie.MIN_ARTIKELEN_PER_SOORT) {
+                vulVoorraadAan(a.getNaam());
+            }
             return a;
         }
     }
