@@ -1,3 +1,5 @@
+package src;
+
 public class Kantine {
 
     private Kassa kassa;

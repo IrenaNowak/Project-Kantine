@@ -1,3 +1,5 @@
+package src;
+
 import java.util.*;
 
 public class Kassa {
@@ -23,7 +25,7 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + String.format("%.2f", getTotaalPrijs(klant)) + "\n");
+        //System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + String.format("%.2f", getTotaalPrijs(klant)) + "\n");
         afgerekendArtikel += getAantalArtikelen(klant);
         totaalPrijs += getTotaalPrijs(klant);
     }
@@ -74,7 +76,7 @@ public class Kassa {
     }
 
     /**
-     * Methode om het aantal artiekeln op te halen die bij een Dienblad hoort
+     * Methode om het aantal artikelen op te halen die bij een Dienblad hoort
      *
      * @param klant Dienblad van klant
      * @return int met het aantal artikelen op Dienblad

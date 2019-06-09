@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Random;
 
 public class KantineSimulatie {
@@ -22,8 +24,8 @@ public class KantineSimulatie {
     private static double[] artikelprijzen = new double[]{1.50, 2.10, 1.65, 1.65};
 
     // minimum en maximum aantal artikelen per soort
-    private static final int MIN_ARTIKELEN_PER_SOORT = 10000;
-    private static final int MAX_ARTIKELEN_PER_SOORT = 20000;
+    public static final int MIN_ARTIKELEN_PER_SOORT = 10;
+    private static final int MAX_ARTIKELEN_PER_SOORT = 20;
 
     // minimum en maximum aantal personen per dag
     private static final int MIN_PERSONEN_PER_DAG = 50;
@@ -146,7 +148,7 @@ public class KantineSimulatie {
             System.out.println("De opbrengst is: " + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()) + " euro");
 
             //hoeveel personen binnen zijn gekomen
-            System.out.print("Er zijn zoveel mensen binnengekomen: " + aantalpersonen + "\n");
+            System.out.print("Er zijn zoveel mensen binnengekomen: " + aantalpersonen + "\n\n");
 
             // reset de kassa voor de volgende dag
             kantine.resetKassa();

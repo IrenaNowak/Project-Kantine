@@ -1,3 +1,5 @@
+package src;
+
 public class Datum {
 
     private int dag;
