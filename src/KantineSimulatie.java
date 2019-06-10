@@ -39,9 +39,9 @@ public class KantineSimulatie {
     private static final int DAGEN = 7;
 
     // aantal klanten
-    private static final int AANTAL_STUDENTEN = 89;
-    private static final int AANTAL_DOCENTEN = 10;
-    private static final int AANTAL_KANTINEMEDEWERKERS = 1;
+    private static final int KANS_AANTAL_STUDENTEN = 89;
+    private static final int KANS_AANTAL_DOCENTEN = 10;
+    private static final int KANS_AANTAL_KANTINEMEDEWERKERS = 1;
 
 
     /**
@@ -180,11 +180,11 @@ public class KantineSimulatie {
                 Dienblad dienblad;
 
                 // Wie komt er kantine binnen?
-                if(randomPersoon <= AANTAL_KANTINEMEDEWERKERS) {
+                if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS) {
                     persoon = new Kantinemedewerker("634", false);
                     dienblad = new Dienblad(persoon);
                     System.out.println(persoon.toString());
-                } else if(randomPersoon <= AANTAL_KANTINEMEDEWERKERS + AANTAL_DOCENTEN) {
+                } else if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS + KANS_AANTAL_DOCENTEN) {
                     persoon = new Docent("JBER", "ICT");
                     dienblad = new Dienblad(persoon);
                     System.out.println(persoon.toString());
@@ -219,15 +219,16 @@ public class KantineSimulatie {
             aantal[i] = kantine.getKassa().aantalArtikelen();
             omzet[i] = kantine.getKassa().hoeveelheidGeldInKassa();
 
-            // druk de dagtotalen af [OUD]
-            //System.out.println("Het aantal verkochte artikelen is: " + kantine.getKassa().aantalArtikelen());
-            //System.out.println("De opbrengst is: " + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()) + " euro");
+            // druk de dagtotalen af
+            SimulatieArt.line();
+            System.out.println("Het aantal verkochte artikelen is: " + kantine.getKassa().aantalArtikelen());
+            System.out.println("De opbrengst is: " + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()) + " euro");
+            System.out.println("Er zijn zoveel mensen binnengekomen: " + aantalpersonen);
 
             // druk Administratie af
             SimulatieArt.line();
             System.out.println("Het gemiddelde aantal verkochte artikelen op " + dag + " is: " + String.format("%.2f", Administratie.berekenGemiddeldAantal(aantal)));
             System.out.println("De gemiddelde omzet op " + dag + " is: " + String.format("%.2f", Administratie.berekenGemiddeldeOmzet(omzet)));
-            System.out.println("Er zijn zoveel mensen binnengekomen op deze dag: " + aantalpersonen);
 
             double [] dagOmzetArray = Administratie.berekenDagOmzet(omzet);
             double dagOmzet = dagOmzetArray[dagNr];
