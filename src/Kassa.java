@@ -90,4 +90,8 @@ public class Kassa {
         }
         return aantalArtikelen;
     }
+
+    public int getAantalArtikelen() {
+        return this.afgerekendArtikel;
+    }
 }

@@ -38,6 +38,11 @@ public class KantineSimulatie {
     // aantal dagen om te simuleren
     private static final int DAGEN = 7;
 
+    // aantal klanten
+    private static final int AANTAL_STUDENTEN = 89;
+    private static final int AANTAL_DOCENTEN = 10;
+    private static final int AANTAL_KANTINEMEDEWERKERS = 1;
+
 
     /**
      * Constructor
@@ -110,17 +115,84 @@ public class KantineSimulatie {
      * @param dagen het aantal dagen dat aangeeft hoelang de simulatie is
      */
     public void simuleer(int dagen) {
+        // Administratie arrays declaratie
+        int[] aantal = new int[dagen];
+        double[] omzet = new double[dagen];
+
+        // Vooraf prints
+        SimulatieArt.simuleerArt();
+        System.out.println("Administratie over " + dagen + " dagen: \n");
+
         // for lus voor dagen
         for (int i = 0; i < dagen; i++) {
+
+            // toon dagen van de week in simulatie
+            String dag = "";
+            int dagNr = 0;
+            switch(i) {
+                case 0:
+                    System.out.println("► MAANDAG");
+                    dag = "maandag";
+                    break;
+                case 1:
+                    System.out.println("\n► DINSDAG");
+                    dag = "dinsdag";
+                    dagNr = 1;
+                    break;
+                case 2:
+                    System.out.println("\n► WOENSDAG");
+                    dag = "woensdag";
+                    dagNr = 2;
+                    break;
+                case 3:
+                    System.out.println("\n► DONDERDAG");
+                    dag = "donderdag";
+                    dagNr = 3;
+                    break;
+                case 4:
+                    System.out.println("\n► VRIJDAG");
+                    dag = "vrijdag";
+                    dagNr = 4;
+                    break;
+                case 5:
+                    System.out.println("\n► ZATERDAG");
+                    dag = "zaterdag";
+                    dagNr = 5;
+                    break;
+                case 6:
+                    System.out.println("\n► ZONDAG");
+                    dag = "zondag";
+                    dagNr = 6;
+                    break;
+            }
 
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
-            for (int j = 0; j < aantalpersonen; j++) {
+            for(int j = 0; j <= aantalpersonen; j++) {
 
-                // maak persoon en dienblad aan, koppel ze
-                Persoon persoon = new Persoon("13456789", "Pieter", "Vlieringa", new Datum(3,5,2000), 'm');
+                // Genereer random persoon met nextInt()
+                int randomPersoon = random.nextInt(MAX_PERSONEN_PER_DAG);
+
+                // Declareer persoon
+                Persoon persoon;
+                Dienblad dienblad;
+
+                // Wie komt er kantine binnen?
+                if(randomPersoon <= AANTAL_KANTINEMEDEWERKERS) {
+                    persoon = new Kantinemedewerker("634", false);
+                    dienblad = new Dienblad(persoon);
+                    System.out.println(persoon.toString());
+                } else if(randomPersoon <= AANTAL_KANTINEMEDEWERKERS + AANTAL_DOCENTEN) {
+                    persoon = new Docent("JBER", "ICT");
+                    dienblad = new Dienblad(persoon);
+                    System.out.println(persoon.toString());
+                } else {
+                    persoon = new Student("147293", "ICT");
+                    dienblad = new Dienblad(persoon);
+                    System.out.println(persoon.toString());
+                }
 
                 // en bedenk hoeveel artikelen worden gepakt
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
@@ -143,12 +215,24 @@ public class KantineSimulatie {
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
 
-            // druk de dagtotalen af
-            System.out.println("Het aantal verkochte artikelen is: " + kantine.getKassa().aantalArtikelen());
-            System.out.println("De opbrengst is: " + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()) + " euro");
+            // Geef Administratie arrays waarde
+            aantal[i] = kantine.getKassa().aantalArtikelen();
+            omzet[i] = kantine.getKassa().hoeveelheidGeldInKassa();
 
-            //hoeveel personen binnen zijn gekomen
-            System.out.print("Er zijn zoveel mensen binnengekomen: " + aantalpersonen + "\n\n");
+            // druk de dagtotalen af [OUD]
+            //System.out.println("Het aantal verkochte artikelen is: " + kantine.getKassa().aantalArtikelen());
+            //System.out.println("De opbrengst is: " + String.format("%.2f", kantine.getKassa().hoeveelheidGeldInKassa()) + " euro");
+
+            // druk Administratie af
+            SimulatieArt.line();
+            System.out.println("Het gemiddelde aantal verkochte artikelen op " + dag + " is: " + String.format("%.2f", Administratie.berekenGemiddeldAantal(aantal)));
+            System.out.println("De gemiddelde omzet op " + dag + " is: " + String.format("%.2f", Administratie.berekenGemiddeldeOmzet(omzet)));
+            System.out.println("Er zijn zoveel mensen binnengekomen op deze dag: " + aantalpersonen);
+
+            double [] dagOmzetArray = Administratie.berekenDagOmzet(omzet);
+            double dagOmzet = dagOmzetArray[dagNr];
+            System.out.println("De gemiddelde dagomzet op " + dag + " is: " + String.format("%.2f", dagOmzet));
+            SimulatieArt.line();
 
             // reset de kassa voor de volgende dag
             kantine.resetKassa();
