@@ -1,8 +1,8 @@
 # Project-Kantine
 
-Irena Nowak & Aline van der Klok
+Door Irena Nowak & Aline van der Klok
 
-Hanzehogeschool Groningen
+Hanzehogeschool Groningen (HBO-ICT)
 
 ## Opgaven
 
@@ -34,30 +34,77 @@ de random.nextInt roept een random getal op tussen 0 en het ingevoerde getal. In
 Er wordt +1 bij de parameter gedaan want bij nextIn(int) telt hij de 0 mee(inclusief) maar het ingevoerde getal niet (exclusief). Om dit getal toch mee te laten doen, wordt er +1 bij opgedaan zodat de grenzen 0 en ingevoerd getal zijn. 
 Dit geeft dan een random getal terug. Bij dit random getal wordt vervolgens het min getal opgeteld, in het geval het random getal 0 gaf en anders krijg je lager dan het minimum, en dat is uiteindelijk de randomValue.
 
-###week 3
-**Opgave 2.c** Het is niet vereist om specifiek een contructor te definiëren.
+### Week 3
+**Opgave 2c.** Het is niet vereist om specifiek een contructor te definiëren.
 Als er geen constructor wordt gedefinieerd dan wordt er automatisch een 
 standaard lege constructor gegenereerd, dit heet een default constructor.
 
-**Opgave 2.d** Er zijn verschillende redenen waarom deze methoden static kunnen zijn. 
+**Opgave 2d.** Er zijn verschillende redenen waarom deze methoden static kunnen zijn. 
 Deze twee methodes zouden nooit hoeven te veranderen; De methodes gebruiken
 geen instantie variabelen; De methodes zijn niet afhankelijk van instantie creatie. 
 De methode kan dus nog prima werken ook al zou er geen instantie van administratie gecreeërd zijn.
 
-**Opgave 2.e** Wanneer een klasse een private constructor heeft en geen public constructors, 
+**Opgave 2e.** Wanneer een klasse een private constructor heeft en geen public constructors, 
 dan kunnen er geen instanties van de klasse worden gemaakt. De declaratie van de
 private constructor zorgt dater geen default constructor wordt gemaakt. 
 Dit kan prima in administratie want er zijn geen instantievariabelen en 
 er zijn alleen maar static methoden. 
 
-**Opgave 2.g** De final zorgt ervoor dat de variabele maar één keer kan worden geïnitialiseerd 
+**Opgave 2g.** De final zorgt ervoor dat de variabele maar één keer kan worden geïnitialiseerd 
 en daarna niet meer kan worden veranderd. 
 
-**Opgave 2.h** Wat er gebeurt is dat een variabele(int) wordt opgeroep die niet bestaat.
+**Opgave 2h.** Wat er gebeurt is dat een variabele(int) wordt opgeroep die niet bestaat.
 Er is immers geen instantie van de klasse aangemaakt met die variabele. 
 De niet static variabele bestaat dus niet en is onmogelijk om aan te roepen. 
 Dit kan worden opgelost door het sleutelwoord static te gebruiken.
 Static methoden bestaan namelijk altijd.
 
-**Opgave 2.i** Nu kan de variabele weer worden veranderd na de initialisatie. Dit mag niet voor
-de dagen van de week want die zullen nooit veranderen.  
+**Opgave 2i.** Nu kan de variabele weer worden veranderd na de initialisatie. Dit mag niet voor
+de dagen van de week want die zullen nooit veranderen. 
+
+### Week 4
+
+**Opgave 1b.** 
+![sequence diagram](https://i.imgur.com/wLd4IU4.png)
+
+**Opgave 1c.**
+Protected betekent dat iets alleen door de subklassen gebruikt kan worden. In dit geval hebben we de instantie variabele saldo ook enkel nodig in de klassen Contant en Pinpas (die Betaalwijze extenden).
+
+**Opgave 3a.**
+Een interface kun je gebruiken door *class KlasseNaam implements InterfaceNaam* te schrijven, dus niet via new. Een interface is geen klasse op zichzelf.
+
+**Opgave 3b.**
+In Java kan je geen instanties maken van een abstracte klasse. Je kan wel een instantie maken die de abstracte klasse zelf extend.
+
+**Opgave 3c.**
+In Java kan je alleen één superklasse overerven. Vandaar dat er ook interfaces bestaan.
+
+**Opgave 3d.**
+Een klasse kan wel meerdere interfaces implementeren.
+
+**Opgave 3e.**
+Het is mogelijk in Java om tegelijkertijd een klasse te overerven en interfaces te implementeren.
+
+**Opgave 3f.**
+Methodes in interfaces zijn altijd public en abstract per definitie. Je kan een interface zien als een blauwdruk voor een klasse. Een interface heeft geen concrete methoden: ze hebben geen code erin. Je ziet in principe alleen de signatures van methoden in een interface. Wanneer je een interface implementeert, dien je de methodes van een interface zelf te definiëren in een klasse (dus de body schrijven).
+
+**Opgave 3g.**
+Abstracte methodes kunnen alleen worden geplaatst in abstracte klassen. Abstract betekent eigenlijk niets anders dat het moet worden geïmplementeerd in een subklasse (de methode zelf). Als je een normale klasse hebt met een abstracte methode zou je die NOOIT kunnen aanroepen, omdat hij dus niet geïmplementeerd is.
+
+**Opgave 3h.**
+Stel je hebt een superklasse Dier. Je hebt daarnaast twee subklassen Hond en Kat. Elke klasse heeft een methode *maakGeluid()* (abstracte methode van Dier). In de Hond klasse wil je vervolgens dat het geluid "woef" wordt en voor de Kat "miauw". Met extends *(extends Dier)* kun je de body in de klasse Kat en Hond schrijven voor deze methode. Met interfaces kun je in principe hetzelfde doen.
+
+**Opgave 4a.**
+Een klasse kan abstract zijn zonder abstracte methoden te bevatten. Deze methoden kunnen alleen worden gebruikt in een subklasse (omdat de klasse zelf dus abstract is). Het enige verschil is dat je de body van de methodes niet in een klasse hoeft te schrijven en je gewoon de functies zelf kunt aanroepen.
+
+**Opgave 4b.**
+Je zou alle abstracte methoden moeten implementeren. Wanneer dit niet zo is zou deze subklasse ook als abstract gedeclareerd moeten worden.
+
+**Opgave 4c.**
+Normaal als je een interface implementeert ga je een soort contract aan met de interface: je moet alle methoden in de interface implementeren. Wanneer je dit niet doet, zou je de klasse waarin je de interface implementeert moeten declareren als abstract om een compileerfout te voorkomen.
+
+**Opgave 4d.**
+Een instantie variabele kan niet abstract zijn. Abstracte dingen is ontworpen om later pas te "bouwen", niet om zelf te gebruiken zonder er iets aan toe te voegen.
+
+**Opgave 4e.**
+Als een methode final is betekent het dat deze niet overridden kan worden in een subklasse. Bij abstracte methoden schrijf je de body van deze methoden pas in de subklasse zelf, daarom kan een methode nooit final en abstract tegelijkertijd zijn.

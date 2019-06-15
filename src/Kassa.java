@@ -25,9 +25,26 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        //System.out.println("Het aantal artikelen: " + getAantalArtikelen(klant) + "\n" + "De totaalprijs: €" + String.format("%.2f", getTotaalPrijs(klant)) + "\n");
-        afgerekendArtikel += getAantalArtikelen(klant);
-        totaalPrijs += getTotaalPrijs(klant);
+        if(checkSaldo(klant.getPersoon())) {
+            afgerekendArtikel += getAantalArtikelen(klant);
+            totaalPrijs += getTotaalPrijs(klant);
+        } else {
+            System.err.println(klant + " kan niet betalen.");
+        }
+    }
+
+    /**
+     * Bekijk of de Persoon genoeg geld bij zich heeft met de betaalwijze waarop hij betaalt
+     *
+     * @param persoon de Persoon
+     * @return boolean true of false wanneer de klant wel of niet genoeg saldo heeft
+     */
+    public boolean checkSaldo(Persoon persoon) {
+        if(persoon.getBetaalwijze().betaal(totaalPrijs)) {
+            return true;
+        }
+        System.err.println(persoon + " kan niet betalen met de betaalmethode " + persoon.getBetaalwijze());
+        return false;
     }
 
     /**
@@ -89,9 +106,5 @@ public class Kassa {
             artikelIterator.next();
         }
         return aantalArtikelen;
-    }
-
-    public int getAantalArtikelen() {
-        return this.afgerekendArtikel;
     }
 }
