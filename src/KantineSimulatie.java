@@ -178,18 +178,19 @@ public class KantineSimulatie {
                 int randomPersoon = random.nextInt(MAX_PERSONEN_PER_DAG);
 
                 // Declareer persoon
-                Persoon persoon = new Persoon();
+                Persoon persoon ;
                 Dienblad dienblad;
 
                 // Wie komt er kantine binnen?
                 if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS) {
-                    persoon = new Kantinemedewerker("634", false);
+                    persoon = new Kantinemedewerker("4184382", "Emily", "de Vries", new Datum(27, 8, 1993), 'v', "634", false);
                     System.out.println(persoon.toString());
                 } else if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS + KANS_AANTAL_DOCENTEN) {
-                    persoon = new Docent("JBER", "ICT");
+                    persoon = new Docent("324244", "Jan", "Jansen", new Datum(2,1,1978), 'm', "JAJA", "ICT");
+                    //String BSN, String voornaam, String achternaam, Datum geboortedatum, char geslacht,
                     System.out.println(persoon.toString());
                 } else {
-                    persoon = new Student("147293", "ICT");
+                    persoon = new Student("8125492", "Aaliyah", "Ferraci", new Datum(23, 11, 1999), 'v', "147293", "ICT");
                     System.out.println(persoon.toString());
                 }
 

@@ -25,7 +25,7 @@ public class Pinpas extends Betaalwijze {
             // nieuwe kredietlimiet
             kredietlimiet -= tebetalen;
         } else {
-            throw new TeWeinigGeldException("Betaling is mislukt (Pinpas).");
+            throw new TeWeinigGeldException("Betaling is mislukt (Pinpas)");
         }
 
     }

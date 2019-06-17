@@ -52,7 +52,8 @@ public class Kassa {
         try {
             betaalwijze.betaal(prijs);
         } catch (TeWeinigGeldException exception) {
-            System.err.println(exception.getMessage());
+            System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
+                    + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
         }
 
         afgerekendArtikel += getAantalArtikelen(klant);

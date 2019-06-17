@@ -11,8 +11,8 @@ public class Student extends Persoon {
      * @param studentNummer String met daarin het studentNummer
      * @param studieRichting String met daarin de studieRichting
      */
-    public Student(String studentNummer, String studieRichting) {
-        super();
+    public Student(String BSN, String voornaam, String achternaam, Datum geboortedatum, char geslacht, String studentNummer, String studieRichting) {
+        super(BSN, voornaam, achternaam, geboortedatum, geslacht);
         this.studentNummer = studentNummer;
         this.studieRichting = studieRichting;
     }

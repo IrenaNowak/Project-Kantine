@@ -12,7 +12,7 @@ public class Contant extends Betaalwijze {
             // nieuwe saldo
             saldo -= tebetalen;
         } else {
-            throw new TeWeinigGeldException("Betaling is mislukt (Contant).");
+            throw new TeWeinigGeldException("Betaling is mislukt (Contant)");
         }
     }
 }

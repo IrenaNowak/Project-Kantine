@@ -5,8 +5,8 @@ public class Kantinemedewerker extends Persoon implements KortingskaartHouder {
     private String medewerkersNummer;
     private boolean kassaWelOfNiet;
 
-    public Kantinemedewerker(String medewerkersNummer, boolean kassaWelOfNiet) {
-        super();
+    public Kantinemedewerker(String BSN, String voornaam, String achternaam, Datum geboortedatum, char geslacht, String medewerkersNummer, boolean kassaWelOfNiet) {
+        super(BSN, voornaam, achternaam, geboortedatum, geslacht);
         this.medewerkersNummer = medewerkersNummer;
         this.kassaWelOfNiet = kassaWelOfNiet;
     }
