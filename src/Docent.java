@@ -1,6 +1,6 @@
 package src;
 
-public class Docent extends Persoon {
+public class Docent extends Persoon implements KortingskaartHouder {
 
     private String docentCode;
     private String afdeling;
@@ -54,5 +54,20 @@ public class Docent extends Persoon {
      */
     public String toString() {
         return("DOCENT: " + getDocentCode() + " " + getAfdeling());
+    }
+
+    @Override
+    public double geefKortingsPercentage() {
+        return 0.25;
+    }
+
+    @Override
+    public boolean heeftMaximum() {
+        return true;
+    }
+
+    @Override
+    public double geefMaximum() {
+        return 1.00;
     }
 }

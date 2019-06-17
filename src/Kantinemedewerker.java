@@ -1,6 +1,6 @@
 package src;
 
-public class Kantinemedewerker extends Persoon {
+public class Kantinemedewerker extends Persoon implements KortingskaartHouder {
 
     private String medewerkersNummer;
     private boolean kassaWelOfNiet;
@@ -56,4 +56,18 @@ public class Kantinemedewerker extends Persoon {
         return("KANTINEMEDEWERKER: " + getMedewerkersNummer() + " "  + isKassaWelOfNiet());
     }
 
+    @Override
+    public double geefKortingsPercentage() {
+        return 0.35;
+    }
+
+    @Override
+    public boolean heeftMaximum() {
+        return false;
+    }
+
+    @Override
+    public double geefMaximum() {
+        return Double.MAX_VALUE;
+    }
 }
