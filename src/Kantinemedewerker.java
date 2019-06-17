@@ -11,6 +11,10 @@ public class Kantinemedewerker extends Persoon implements KortingskaartHouder {
         this.kassaWelOfNiet = kassaWelOfNiet;
     }
 
+    public Kantinemedewerker() {
+        super();
+    }
+
     /**
      * Methode die het medewerkersNummer van Kantinemedewerker retourneert
      *

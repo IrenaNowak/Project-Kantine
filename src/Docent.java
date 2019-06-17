@@ -11,6 +11,10 @@ public class Docent extends Persoon implements KortingskaartHouder {
         this.afdeling = afdeling;
     }
 
+    public Docent() {
+        super();
+    }
+
     /**
      * Methode om de docentCode op te vragen
      *

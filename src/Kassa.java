@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Kassa {
 
-    private Artikel artikel;
     private KassaRij kassarij;
     private int afgerekendArtikel;
     private double totaalPrijs;
@@ -13,6 +12,8 @@ public class Kassa {
      * Constructor
      */
     public Kassa(KassaRij kassarij) {
+        this.afgerekendArtikel = 0;
+        this.totaalPrijs = 0.00;
         this.kassarij = kassarij;
     }
 
@@ -25,26 +26,37 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        if(checkSaldo(klant.getPersoon())) {
-            afgerekendArtikel += getAantalArtikelen(klant);
-            totaalPrijs += getTotaalPrijs(klant);
-        } else {
-            System.err.println(klant + " kan niet betalen.");
-        }
-    }
 
-    /**
-     * Bekijk of de Persoon genoeg geld bij zich heeft met de betaalwijze waarop hij betaalt
-     *
-     * @param persoon de Persoon
-     * @return boolean true of false wanneer de klant wel of niet genoeg saldo heeft
-     */
-    public boolean checkSaldo(Persoon persoon) {
-        if(persoon.getBetaalwijze().betaal(totaalPrijs)) {
-            return true;
+        Persoon persoon = klant.getPersoon();
+        Betaalwijze betaalwijze = persoon.getBetaalwijze();
+        double prijs = getTotaalPrijs(klant);
+        double kortingsPercentage;
+        double kortingVanBedrag = 0.00;
+
+
+        if(persoon instanceof KortingskaartHouder) {
+
+            KortingskaartHouder kortingskaartHouder = (KortingskaartHouder) persoon;
+            kortingsPercentage = kortingskaartHouder.geefKortingsPercentage();
+
+            if (kortingsPercentage > 0) {
+                kortingVanBedrag = prijs * kortingsPercentage;
+            }
+
+            if (kortingskaartHouder.heeftMaximum() && kortingVanBedrag > kortingskaartHouder.geefMaximum()) {
+                kortingVanBedrag = kortingskaartHouder.geefMaximum();
+            }
+
         }
-        System.err.println(persoon + " kan niet betalen met de betaalmethode " + persoon.getBetaalwijze());
-        return false;
+
+        try {
+            betaalwijze.betaal(prijs);
+        } catch (TeWeinigGeldException exception) {
+            System.err.println(exception.getMessage());
+        }
+
+        afgerekendArtikel += getAantalArtikelen(klant);
+        totaalPrijs += (prijs-kortingVanBedrag);
     }
 
     /**

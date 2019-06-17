@@ -17,11 +17,10 @@ public class Kantine {
     /**
      * In deze methode kiest een Persoon met een Dienblad de artikelen in artikelnamen
      *
-     * @param persoon de Persoon
+     * @param dienblad het Dienblad
      * @param artikelnamen Array met artikelen
      */
-    public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
-        Dienblad dienblad = new Dienblad(persoon);
+    public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
         for(String artikel : artikelnamen) {
             dienblad.voegToe(kantineAanbod.getArtikel(artikel));
         }

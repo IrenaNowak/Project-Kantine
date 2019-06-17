@@ -17,6 +17,10 @@ public class Student extends Persoon {
         this.studieRichting = studieRichting;
     }
 
+    public Student() {
+        super();
+    }
+
     /**
      * Methode die de studentNummer van Student retourneert
      *

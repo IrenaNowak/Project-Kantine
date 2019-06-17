@@ -166,6 +166,8 @@ public class KantineSimulatie {
                     break;
             }
 
+
+
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
@@ -176,23 +178,40 @@ public class KantineSimulatie {
                 int randomPersoon = random.nextInt(MAX_PERSONEN_PER_DAG);
 
                 // Declareer persoon
-                Persoon persoon;
+                Persoon persoon = new Persoon();
                 Dienblad dienblad;
 
                 // Wie komt er kantine binnen?
                 if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS) {
                     persoon = new Kantinemedewerker("634", false);
-                    dienblad = new Dienblad(persoon);
                     System.out.println(persoon.toString());
                 } else if(randomPersoon <= KANS_AANTAL_KANTINEMEDEWERKERS + KANS_AANTAL_DOCENTEN) {
                     persoon = new Docent("JBER", "ICT");
-                    dienblad = new Dienblad(persoon);
                     System.out.println(persoon.toString());
                 } else {
                     persoon = new Student("147293", "ICT");
-                    dienblad = new Dienblad(persoon);
                     System.out.println(persoon.toString());
                 }
+
+                // Bepaal de betaalwijze
+                int bepaalBetaalwijze = random.nextInt(2);
+
+                //genereer willekeurig kredietlimiet/saldo tussen 0 en 500
+                int kredietlimiet = random.nextInt(501);
+                int saldo = random.nextInt(501);
+
+                if(bepaalBetaalwijze == 0) {
+                    persoon.setBetaalwijze(new Contant());
+                    persoon.getBetaalwijze().setSaldo(saldo);
+
+                } else {
+                    Pinpas pinpas = new Pinpas();
+                    pinpas.setKredietLimiet(kredietlimiet);
+                    persoon.setBetaalwijze(pinpas);
+                    persoon.getBetaalwijze().setSaldo(saldo);
+                }
+
+                dienblad = new Dienblad(persoon);
 
                 // en bedenk hoeveel artikelen worden gepakt
                 int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
@@ -208,7 +227,7 @@ public class KantineSimulatie {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon, artikelen);
+                kantine.loopPakSluitAan(dienblad, artikelen);
 
             }
 
