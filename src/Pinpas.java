@@ -18,15 +18,18 @@ public class Pinpas extends Betaalwijze {
      *
      * @param tebetalen Het bedrag dat betaalt dient te worden
      */
+
+    // Kredietlimiet: hoeveel je maximaal op kan nemen
+    // Niet meer betalen dan kredietlimiet + saldo
     @Override
     public void betaal(double tebetalen) throws TeWeinigGeldException {
-        if(kredietlimiet >= tebetalen && (saldo-tebetalen) > 0) {
+        if(tebetalen <= this.kredietlimiet + this.saldo) {
 
-            // nieuwe kredietlimiet
-            kredietlimiet -= tebetalen;
+            this.kredietlimiet -= tebetalen;
+            this.saldo -= tebetalen;
+
         } else {
             throw new TeWeinigGeldException("Betaling is mislukt (Pinpas)");
         }
-
     }
 }

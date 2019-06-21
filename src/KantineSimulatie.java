@@ -4,13 +4,8 @@ import java.util.Random;
 
 public class KantineSimulatie {
 
-    // kantine
     private Kantine kantine;
-
-    // kantineaanbod
     private KantineAanbod kantineaanbod;
-
-    // random generator
     private Random random;
 
     // aantal artikelen
