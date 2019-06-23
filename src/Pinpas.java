@@ -16,7 +16,7 @@ public class Pinpas extends Betaalwijze {
     /**
      * Methode om betaling af te handelen
      *
-     * @param tebetalen Het bedrag dat betaalt dient te worden
+     * @param tebetalen Het bedrag dat betaalt dient te wordene
      */
 
     // Kredietlimiet: hoeveel je maximaal op kan nemen

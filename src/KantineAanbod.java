@@ -31,6 +31,11 @@ public class KantineAanbod {
         }
     }
 
+    /**
+     * Vult de huidige vooraad weer aan totdat het weer de startvooraad heeft bereikt
+     *
+     * @param productnaam van het product
+     */
     private void vulVoorraadAan(String productnaam) {
         ArrayList<Artikel> huidigeVoorraad = aanbod.get(productnaam);
 

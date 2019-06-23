@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Kassa {
 
+    private Artikel artikel;
     private KassaRij kassarij;
     private int afgerekendArtikel;
     private double totaalPrijs;
@@ -12,8 +13,6 @@ public class Kassa {
      * Constructor
      */
     public Kassa(KassaRij kassarij) {
-        this.afgerekendArtikel = 0;
-        this.totaalPrijs = 0.00;
         this.kassarij = kassarij;
     }
 
@@ -26,7 +25,6 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-
         Persoon persoon = klant.getPersoon();
         Betaalwijze betaalwijze = persoon.getBetaalwijze();
         double prijs = getTotaalPrijs(klant);
@@ -46,7 +44,6 @@ public class Kassa {
             if (kortingskaartHouder.heeftMaximum() && kortingVanBedrag > kortingskaartHouder.geefMaximum()) {
                 kortingVanBedrag = kortingskaartHouder.geefMaximum();
             }
-
         }
 
         try {
@@ -58,6 +55,20 @@ public class Kassa {
 
         afgerekendArtikel += getAantalArtikelen(klant);
         totaalPrijs += (prijs-kortingVanBedrag);
+
+        /*
+        try {
+            persoon.getBetaalwijze().betaal(totaalPrijs);
+            totaalPrijs += getTotaalPrijs(klant);
+            afgerekendArtikel += getAantalArtikelen(klant);
+        }
+        catch (TeWeinigGeldException e) {
+            System.err.println(klant + " Kan niet betalen. Te weinig saldo");
+            System.err.println(klant.getVoornaam);
+            System.err.println(klant.getAchternaam);
+            System.err.println(prijs);
+        }
+         */
     }
 
     /**

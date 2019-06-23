@@ -108,3 +108,31 @@ Een instantie variabele kan niet abstract zijn. Abstracte dingen is ontworpen om
 
 **Opgave 4e.**
 Als een methode final is betekent het dat deze niet overridden kan worden in een subklasse. Bij abstracte methoden schrijf je de body van deze methoden pas in de subklasse zelf, daarom kan een methode nooit final en abstract tegelijkertijd zijn.
+
+### week 5
+**opgave 1d.** Het doel van de annotaties zijn:
+@Id= deze variabele moet een unieke id bevatten. Deze column wordt dan de primary key
+@GeneratedValue= deze variabele wordt random gegenereert. Dit betekent dat de primary key automatisch gegenereerd word.  
+@Column= wordt gebruikt om de variabele een eigenschap te geven, zoals een naam
+
+**opgave 2a.**
+Omdat een student meerdere telefoonnummers kan hebben. 
+Bijvoorbeeld een mobiel nummer en een vaste thuislijn.
+
+**opgave 2b.**
+Bij de student-telefoons zal er naast de tabellen Student en Telefoons ook een derde tabel worden aangemaakt, namelijk de tabel Student_Telefoons.
+
+Bij de student-studieinschrijving zullen er maar twee tabellen worden aangemaakt, Student en StudieInschrijving. 
+Maar Student zal een foreign key krijgen. In Student zal er dus een een studieInschrijving_id komen te staan.
+
+De meeste studenten zullen maar een studie aan het doen zijn, dus dan kan het net zo goed gelijk worden aangegeven met een foreign key i.p.v. een nieuwe tabel daarvoor aan te maken.
+
+**opgave 2c.**
+StudieInschrijving:1----3:Student
+
+**opgave 2d.** 
+In de tabel Student.
+Dat als een entiteit embeddable is dat het in iets anders kan worden ge-embed. 
+Terwijl als de entiteit embedded is dat betekent dat die entiteit wordt embed door de embeddable entiteit.
+
+**opgave 3.** Ja, namelijk bij de methode rekenAf.

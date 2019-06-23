@@ -1,7 +1,6 @@
 package src;
 
 public class TeWeinigGeldException extends Exception {
-
     public TeWeinigGeldException() {
         super();
     }
