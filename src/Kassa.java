@@ -1,6 +1,11 @@
 package src;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import java.time.LocalDate;
 import java.util.*;
+
+import static java.time.LocalDate.now;
 
 public class Kassa {
 
@@ -8,12 +13,14 @@ public class Kassa {
     private KassaRij kassarij;
     private int afgerekendArtikel;
     private double totaalPrijs;
+    private EntityManager manager;
 
     /**
      * Constructor
      */
-    public Kassa(KassaRij kassarij) {
+    public Kassa(KassaRij kassarij, EntityManager manager) {
         this.kassarij = kassarij;
+        this.manager = manager;
     }
 
     /**
@@ -27,48 +34,32 @@ public class Kassa {
     public void rekenAf(Dienblad klant) {
         Persoon persoon = klant.getPersoon();
         Betaalwijze betaalwijze = persoon.getBetaalwijze();
-        double prijs = getTotaalPrijs(klant);
-        double kortingsPercentage;
-        double kortingVanBedrag = 0.00;
-
-
-        if(persoon instanceof KortingskaartHouder) {
-
-            KortingskaartHouder kortingskaartHouder = (KortingskaartHouder) persoon;
-            kortingsPercentage = kortingskaartHouder.geefKortingsPercentage();
-
-            if (kortingsPercentage > 0) {
-                kortingVanBedrag = prijs * kortingsPercentage;
-            }
-
-            if (kortingskaartHouder.heeftMaximum() && kortingVanBedrag > kortingskaartHouder.geefMaximum()) {
-                kortingVanBedrag = kortingskaartHouder.geefMaximum();
-            }
-        }
+        int aantalArtikelen = getAantalArtikelen(klant);
+        LocalDate datum = now();
+        Factuur factuur = new Factuur(klant, datum);
+        double prijs = factuur.getTotaal();
 
         try {
             betaalwijze.betaal(prijs);
         } catch (TeWeinigGeldException exception) {
             System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
                     + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
-        }
-
-        afgerekendArtikel += getAantalArtikelen(klant);
-        totaalPrijs += (prijs-kortingVanBedrag);
-
-        /*
-        try {
-            persoon.getBetaalwijze().betaal(totaalPrijs);
-            totaalPrijs += getTotaalPrijs(klant);
+        } finally {
             afgerekendArtikel += getAantalArtikelen(klant);
+            totaalPrijs += prijs;
+
+            // Transactie met rollback [GENEREERT NULLPOINTER]
+            /*EntityTransaction transaction = null;
+            try {
+                transaction = manager.getTransaction();
+                transaction.begin();
+            } catch (Exception ex) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+                ex.printStackTrace();
+            }*/
         }
-        catch (TeWeinigGeldException e) {
-            System.err.println(klant + " Kan niet betalen. Te weinig saldo");
-            System.err.println(klant.getVoornaam);
-            System.err.println(klant.getAchternaam);
-            System.err.println(prijs);
-        }
-         */
     }
 
     /**

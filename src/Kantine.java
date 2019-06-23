@@ -1,17 +1,21 @@
 package src;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 public class Kantine {
 
     private Kassa kassa;
     private KassaRij kassarij;
     private KantineAanbod kantineAanbod;
+    private EntityManager manager;
 
     /**
      * Constructor
      */
     public Kantine() {
         kassarij = new KassaRij();
-        kassa = new Kassa(kassarij);
+        kassa = new Kassa(kassarij, manager);
     }
 
     /**
@@ -20,11 +24,12 @@ public class Kantine {
      * @param dienblad het Dienblad
      * @param artikelnamen Array met artikelen
      */
-    public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
+    public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen, EntityManager manager) {
         for(String artikel : artikelnamen) {
             dienblad.voegToe(kantineAanbod.getArtikel(artikel));
         }
         kassarij.sluitAchteraan(dienblad);
+        this.manager = manager;
     }
 
     /**

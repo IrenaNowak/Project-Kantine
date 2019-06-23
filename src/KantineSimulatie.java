@@ -1,8 +1,14 @@
 package src;
 
 import java.util.Random;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class KantineSimulatie {
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
+            Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
 
     private Kantine kantine;
     private KantineAanbod kantineaanbod;
@@ -37,7 +43,6 @@ public class KantineSimulatie {
     private static final int KANS_AANTAL_STUDENTEN = 89;
     private static final int KANS_AANTAL_DOCENTEN = 10;
     private static final int KANS_AANTAL_KANTINEMEDEWERKERS = 1;
-
 
     /**
      * Constructor
@@ -110,6 +115,8 @@ public class KantineSimulatie {
      * @param dagen het aantal dagen dat aangeeft hoelang de simulatie is
      */
     public void simuleer(int dagen) {
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+
         // Administratie arrays declaratie
         int[] aantal = new int[dagen];
         double[] omzet = new double[dagen];
@@ -223,7 +230,7 @@ public class KantineSimulatie {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
-                kantine.loopPakSluitAan(dienblad, artikelen);
+                kantine.loopPakSluitAan(dienblad, artikelen, manager);
             }
 
             // verwerk rij voor de kassa
@@ -252,6 +259,8 @@ public class KantineSimulatie {
             // reset de kassa voor de volgende dag
             kantine.resetKassa();
         }
+        manager.close();
+        ENTITY_MANAGER_FACTORY.close();
     }
 
 
