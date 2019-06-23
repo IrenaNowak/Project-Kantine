@@ -116,7 +116,8 @@ Als een methode final is betekent het dat deze niet overridden kan worden in een
 @Column= wordt gebruikt om de variabele een eigenschap te geven, zoals een naam
 
 **Opgave 1e.**
-![jpavoorbeeld](https://i.imgur.com/bJNqmqG.png)
+
+![jpavoorbeeld](https://i.imgur.com/rfoGJkd.png)
 
 **Opgave 2a.**
 Omdat een student meerdere telefoonnummers kan hebben. 
