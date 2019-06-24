@@ -34,33 +34,34 @@ public class Kassa {
     public void rekenAf(Dienblad klant) {
         Persoon persoon = klant.getPersoon();
         Betaalwijze betaalwijze = persoon.getBetaalwijze();
-        int aantalArtikelen = getAantalArtikelen(klant);
         LocalDate datum = now();
         Factuur factuur = new Factuur(klant, datum);
         double prijs = factuur.getTotaal();
 
-        try {
+       /* try {
             betaalwijze.betaal(prijs);
         } catch (TeWeinigGeldException exception) {
             System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
                     + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
         } finally {
             afgerekendArtikel += getAantalArtikelen(klant);
-            totaalPrijs += prijs;
+            totaalPrijs += prijs;*/
 
-            // Transactie met rollback [GENEREERT NULLPOINTER]
-            /*EntityTransaction transaction = null;
-            try {
-                transaction = manager.getTransaction();
-                transaction.begin();
-            } catch (Exception ex) {
-                if (transaction != null) {
-                    transaction.rollback();
-                }
-                ex.printStackTrace();
-            }*/
+            // Transactie met rollback
+        EntityTransaction transaction = manager.getTransaction();
+
+        try {
+            transaction.begin();
+            manager.persist(factuur);
+            betaalwijze.betaal(prijs);
+            transaction.commit();
+        } catch (TeWeinigGeldException exception) {
+            transaction.rollback();
+            System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
+                    + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
+            }
         }
-    }
+
 
     /**
      * Geeft het aantal artikelen dat de kassa heeft gepasseerd,

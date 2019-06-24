@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class KantineSimulatie {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
-            Persistence.createEntityManagerFactory("KantineSimulatie");
+            Persistence.createEntityManagerFactory("jpakantine");
     private EntityManager manager;
 
     private Kantine kantine;
@@ -48,7 +48,8 @@ public class KantineSimulatie {
      * Constructor
      */
     public KantineSimulatie() {
-        kantine = new Kantine();
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        kantine = new Kantine(manager);
         random = new Random();
         int[] hoeveelheden = getRandomArray(
                 AANTAL_ARTIKELEN,
@@ -115,8 +116,6 @@ public class KantineSimulatie {
      * @param dagen het aantal dagen dat aangeeft hoelang de simulatie is
      */
     public void simuleer(int dagen) {
-        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
-
         // Administratie arrays declaratie
         int[] aantal = new int[dagen];
         double[] omzet = new double[dagen];

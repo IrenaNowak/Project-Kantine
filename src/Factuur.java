@@ -6,22 +6,22 @@ import java.io.Serializable;
 import java.util.Iterator;
 
 @Entity
-@Table(name = "Factuur")
-
+@Table(name = "factuur")
 
 public class Factuur implements Serializable {
 
     @Id
-    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "factuur_datum")
+    @Column(name = "factuur_datum", nullable = false)
     private LocalDate datum;
 
     @Column(name = "factuur_korting")
     private double korting;
 
-    @Column(name = "factuur_totaal")
+    @Column(name = "factuur_totaal", nullable = false)
     private double totaal;
 
     public Factuur() {

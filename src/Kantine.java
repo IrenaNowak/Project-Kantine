@@ -13,7 +13,8 @@ public class Kantine {
     /**
      * Constructor
      */
-    public Kantine() {
+    public Kantine(EntityManager manager) {
+        this.manager = manager;
         kassarij = new KassaRij();
         kassa = new Kassa(kassarij, manager);
     }
