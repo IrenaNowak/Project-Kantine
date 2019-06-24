@@ -1,9 +1,12 @@
 package src;
 
 import java.util.Random;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
 
 public class KantineSimulatie {
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY =
@@ -229,7 +232,7 @@ public class KantineSimulatie {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
-                kantine.loopPakSluitAan(dienblad, artikelen, manager);
+                kantine.loopPakSluitAan(dienblad, artikelen);
             }
 
             // verwerk rij voor de kassa
@@ -258,6 +261,46 @@ public class KantineSimulatie {
             // reset de kassa voor de volgende dag
             kantine.resetKassa();
         }
+            //de query voor de totale omzet van de week
+            Query queryTotaleOmzet = manager.createNativeQuery(
+                    "SELECT round(sum(factuur_totaal), 2) FROM factuur"
+            );
+            double totaleOmzet = (double) queryTotaleOmzet.getSingleResult();
+
+            //de query voor de totale toegepaste korting van de week
+            Query queryTotaleKorting = manager.createNativeQuery(
+                    "SELECT round(sum(factuur_korting), 2) FROM factuur"
+            );
+            double totaleKorting = (double) queryTotaleKorting.getSingleResult();
+
+            //de query voor de gemiddelde omzet van de week
+            Query queryGemOmzet = manager.createNativeQuery(
+                    "SELECT round(avg(factuur_totaal),2) FROM factuur"
+            );
+            double gemOmzet = (double) queryGemOmzet.getSingleResult();
+
+            //de query voor de gemiddelde toegepaste korting
+            Query queryGemKorting = manager.createNativeQuery(
+                    "SELECT round(avg(factuur_korting), 2) FROM factuur"
+            );
+            double gemKorting = (double) queryGemKorting.getSingleResult();
+
+            //de query voor de top 3 facturen met de hoogte omzet
+            Query queryTop3 = manager.createNativeQuery(
+                    "SELECT factuur_totaal FROM factuur ORDER BY factuur_totaal DESC LIMIT 3"
+            );
+            List top3 = queryTop3.getResultList();
+
+            //alle query resultaten worden hier geprint
+            System.out.println("De totale omzet van de week is: " + totaleOmzet + "euro");
+            System.out.println("De totale toegepaste korting van de week is: " + totaleKorting + "euro");
+            System.out.println("De gemiddelde omzet van de week is: " + gemOmzet + "euro");
+            System.out.println("De gemiddelde toegepaste korting van de week is: " + gemKorting + "euro");
+            System.out.println("De top 3 totale omzet facturen");
+            for (Object resultaat : top3) {
+                System.out.println((double) resultaat + "euro \n");
+            }
+
         manager.close();
         ENTITY_MANAGER_FACTORY.close();
     }
@@ -280,3 +323,4 @@ public class KantineSimulatie {
     }
 
 }
+

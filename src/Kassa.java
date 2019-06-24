@@ -38,15 +38,6 @@ public class Kassa {
         Factuur factuur = new Factuur(klant, datum);
         double prijs = factuur.getTotaal();
 
-       /* try {
-            betaalwijze.betaal(prijs);
-        } catch (TeWeinigGeldException exception) {
-            System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
-                    + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
-        } finally {
-            afgerekendArtikel += getAantalArtikelen(klant);
-            totaalPrijs += prijs;*/
-
             // Transactie met rollback
         EntityTransaction transaction = manager.getTransaction();
 
@@ -60,6 +51,9 @@ public class Kassa {
             System.err.println(exception.getMessage() + " voor: " + persoon.getVoornaam() + " "
                     + persoon.getAchternaam() + ", bedrag €" + String.format("%.2f", prijs));
             }
+            totaalPrijs += prijs;
+            afgerekendArtikel += getAantalArtikelen(klant);
+
         }
 
 
