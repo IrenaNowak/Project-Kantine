@@ -287,7 +287,7 @@ public class KantineSimulatie {
 
             //de query voor de top 3 facturen met de hoogte omzet
             Query queryTop3 = manager.createNativeQuery(
-                    "SELECT factuur_totaal FROM factuur ORDER BY factuur_totaal DESC LIMIT 3"
+                    "SELECT round((factuur_totaal), 2) FROM factuur ORDER BY factuur_totaal DESC LIMIT 3"
             );
             List top3 = queryTop3.getResultList();
 
@@ -296,9 +296,9 @@ public class KantineSimulatie {
             System.out.println("De totale toegepaste korting van de week is: " + totaleKorting + "euro");
             System.out.println("De gemiddelde omzet van de week is: " + gemOmzet + "euro");
             System.out.println("De gemiddelde toegepaste korting van de week is: " + gemKorting + "euro");
-            System.out.println("De top 3 totale omzet facturen");
+            System.out.println("De top 3 totale omzet facturen:");
             for (Object resultaat : top3) {
-                System.out.println((double) resultaat + "euro \n");
+                System.out.println((double) resultaat + " euro");
             }
 
         manager.close();

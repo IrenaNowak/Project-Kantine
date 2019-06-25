@@ -1,8 +1,15 @@
 package src;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Artikel {
 
+    @Column(name= "artikel_naam")
     private String naam;
+
+    @Column(name= "artikel_prijs")
     private double prijs;
 
     /**

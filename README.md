@@ -140,3 +140,12 @@ Dat als een entiteit embeddable is dat het in iets anders kan worden ge-embed.
 Terwijl als de entiteit embedded is dat betekent dat die entiteit wordt embed door de embeddable entiteit.
 
 **Opgave 3.** Ja, namelijk bij de methode rekenAf.
+
+###Week 6
+
+**Opgave 4e.** de reden dat er een aparte klasse voor de artikelen in factuur wordt aangemaakt is, 
+dat factuur een entiteit is waar de artikelen niet als losse variabelen worden onderscheden. 
+In java kan dit worden gecompenseerd met een List, maar in de sql database zou de hele lijst met items als het ware in één cel moeten worden gestopt.
+Maar het doel van de opdracht is om te kunnen uitvinden wat en welke de complementaire en substitutieproducten zijn. Om dit uit te vinden zijn de losse 
+producten nodig. Deze heb je niet als je artikelen gelijk al bij factuur ingooit. Daarom wordt er een Factuurregel klasse  aangemaakt.
+Dit zijn alle losse producten op de factuur en met deze informatie kunnen we werkelijk de relaties tussen individuele goederen onderzoeken.
